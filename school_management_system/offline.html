@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .offline-container {
+            text-align: center;
+            color: white;
+            max-width: 500px;
+            padding: 2rem;
+        }
+        .offline-icon {
+            font-size: 5rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        .retry-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .retry-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <i class="bi bi-wifi-off offline-icon pulse"></i>
+        <h2 class="mb-3">You're Offline</h2>
+        <p class="lead mb-4">
+            It looks like you've lost your internet connection. 
+            Please check your network and try again.
+        </p>
+        
+        <div class="mb-4">
+            <div class="d-flex align-items-center justify-content-center mb-2">
+                <i class="bi bi-exclamation-circle me-2"></i>
+                <span>No internet connection</span>
+            </div>
+            <small class="text-light">
+                Some features may not work properly while offline.
+            </small>
+        </div>
+        
+        <button class="btn retry-btn btn-lg px-4" onclick="retryConnection()">
+            <i class="bi bi-arrow-clockwise me-2"></i>
+            Retry Connection
+        </button>
+        
+        <div class="mt-4">
+            <small class="text-light">
+                <i class="bi bi-info-circle me-1"></i>
+                Cached data will be available when you're back online
+            </small>
+        </div>
+    </div>
+
+    <script>
+        function retryConnection() {
+            // Check if online
+            if (navigator.onLine) {
+                window.location.reload();
+            } else {
+                // Show temporary feedback
+                const btn = document.querySelector('.retry-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Still Offline';
+                btn.classList.add('btn-outline-danger');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('btn-outline-danger');
+                }, 2000);
+            }
+        }
+        
+        // Auto-retry when connection is restored
+        window.addEventListener('online', function() {
+            document.querySelector('.offline-container').innerHTML = `
+                <i class="bi bi-wifi offline-icon text-success"></i>
+                <h2 class="mb-3 text-success">Connection Restored!</h2>
+                <p class="lead mb-4">Redirecting you back to the application...</p>
+                <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                window.location.href = '/school_management_system/';
+            }, 2000);
+        });
+        
+        // Update UI based on connection status
+        window.addEventListener('offline', function() {
+            document.querySelector('.retry-btn').disabled = true;
+        });
+        
+        window.addEventListener('online', function() {
+            document.querySelector('.retry-btn').disabled = false;
+        });
+    </script>
+</body>
+</html>
