@@ -1,0 +1,7 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f0f0f0" stroke="#c8c8c8" stroke-width="2"/>
+  <g fill="#787878" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">
+    <text x="200" y="180">Student</text>
+    <text x="200" y="220">Photo</text>
+  </g>
+</svg>

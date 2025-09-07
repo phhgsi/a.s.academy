@@ -1,0 +1,575 @@
+/**
+ * Standardized Print Stylesheet
+ * School Management System
+ * 
+ * Provides consistent print layouts across all pages with:
+ * - Standard A4 page margins and formatting
+ * - Professional header and footer components
+ * - Clean table and form styling
+ * - Proper page breaks and spacing
+ */
+
+/* =====================================
+   PRINT MEDIA QUERIES
+   ===================================== */
+
+@media print {
+    /* Reset and base print styles */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        color: #000 !important;
+        font-family: 'Times New Roman', serif !important;
+        font-size: 12pt !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Page setup */
+    @page {
+        margin: 20mm 15mm;
+        size: A4 portrait;
+    }
+    
+    @page :first {
+        margin-top: 15mm;
+    }
+    
+    /* Hide non-printable elements */
+    .sidebar,
+    .main-header,
+    .btn,
+    .export-btn-group,
+    .hamburger-menu,
+    .hamburger-header,
+    .sidebar-toggle,
+    .no-print,
+    .print-controls,
+    .notification-menu,
+    .user-menu,
+    .search-container,
+    .sidebar-overlay,
+    .alert,
+    .loading-overlay,
+    nav,
+    .footer,
+    .back-to-top {
+        display: none !important;
+    }
+    
+    /* Main content adjustments */
+    .main-content {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .content-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Print header component */
+    .print-header {
+        text-align: center;
+        border-bottom: 2px solid #000;
+        padding-bottom: 15pt;
+        margin-bottom: 20pt;
+        page-break-inside: avoid;
+    }
+    
+    .print-header .school-logo {
+        width: 60pt !important;
+        height: 60pt !important;
+        margin: 0 auto 10pt auto;
+        display: block;
+    }
+    
+    .print-header .school-name {
+        font-size: 18pt;
+        font-weight: bold;
+        margin: 0;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 1pt;
+    }
+    
+    .print-header .school-address {
+        font-size: 10pt;
+        margin: 5pt 0;
+        color: #333;
+    }
+    
+    .print-header .report-title {
+        font-size: 14pt;
+        font-weight: bold;
+        margin: 10pt 0 0 0;
+        color: #000;
+        text-transform: uppercase;
+        text-decoration: underline;
+    }
+    
+    /* Print body content */
+    .print-body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Page headers */
+    .page-header {
+        border-bottom: 1px solid #000;
+        padding-bottom: 10pt;
+        margin-bottom: 15pt;
+        page-break-inside: avoid;
+    }
+    
+    .page-title {
+        font-size: 16pt !important;
+        font-weight: bold !important;
+        margin: 0 !important;
+        color: #000 !important;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+    }
+    
+    .page-subtitle {
+        font-size: 11pt !important;
+        color: #333 !important;
+        margin: 3pt 0 0 0 !important;
+    }
+    
+    /* Cards and sections */
+    .card {
+        border: 1px solid #000 !important;
+        border-radius: 0 !important;
+        background: white !important;
+        margin-bottom: 15pt !important;
+        page-break-inside: avoid;
+        overflow: visible !important;
+    }
+    
+    .card-header {
+        background: #f5f5f5 !important;
+        border-bottom: 1px solid #000 !important;
+        padding: 8pt !important;
+        font-weight: bold !important;
+    }
+    
+    .card-body {
+        padding: 10pt !important;
+    }
+    
+    .card-title {
+        font-size: 14pt !important;
+        font-weight: bold !important;
+        margin: 0 !important;
+        color: #000 !important;
+    }
+    
+    /* Tables */
+    .table,
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 10pt 0 !important;
+        page-break-inside: avoid;
+        font-size: 10pt !important;
+    }
+    
+    .table th,
+    .table td,
+    th,
+    td {
+        border: 1px solid #000 !important;
+        padding: 6pt 4pt !important;
+        text-align: left !important;
+        vertical-align: top !important;
+        background: white !important;
+    }
+    
+    .table th,
+    th {
+        background: #f0f0f0 !important;
+        font-weight: bold !important;
+        color: #000 !important;
+    }
+    
+    .table tbody tr:nth-child(even),
+    tbody tr:nth-child(even) {
+        background: #f9f9f9 !important;
+    }
+    
+    /* Forms */
+    .form-group {
+        margin-bottom: 10pt !important;
+        page-break-inside: avoid;
+    }
+    
+    .form-label {
+        font-weight: bold !important;
+        margin-bottom: 3pt !important;
+        color: #000 !important;
+    }
+    
+    .form-input,
+    .form-control,
+    input,
+    select,
+    textarea {
+        border: 1px solid #000 !important;
+        background: white !important;
+        padding: 3pt !important;
+        font-size: 11pt !important;
+        color: #000 !important;
+    }
+    
+    /* Grid layouts */
+    .form-grid {
+        display: block !important;
+    }
+    
+    .form-grid .form-group {
+        display: block !important;
+        margin-bottom: 8pt !important;
+    }
+    
+    /* Statistics and summary boxes */
+    .stat-card,
+    .summary-section {
+        border: 1px solid #000 !important;
+        background: white !important;
+        margin-bottom: 10pt !important;
+        padding: 8pt !important;
+        page-break-inside: avoid;
+    }
+    
+    .stat-value,
+    .summary-value {
+        font-size: 14pt !important;
+        font-weight: bold !important;
+        color: #000 !important;
+    }
+    
+    .stat-title,
+    .summary-label {
+        font-size: 10pt !important;
+        color: #333 !important;
+        text-transform: uppercase;
+    }
+    
+    /* Badges and status indicators */
+    .badge {
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: #000 !important;
+        padding: 2pt 4pt !important;
+        font-size: 9pt !important;
+        font-weight: bold !important;
+    }
+    
+    /* Print footer component */
+    .print-footer {
+        margin-top: 20pt;
+        padding-top: 10pt;
+        border-top: 1px solid #000;
+        font-size: 9pt;
+        color: #666;
+        text-align: center;
+        page-break-inside: avoid;
+    }
+    
+    .print-footer p {
+        margin: 2pt 0;
+    }
+    
+    /* Student/person info sections */
+    .student-header,
+    .person-header {
+        border: 1px solid #000 !important;
+        background: #f8f8f8 !important;
+        padding: 10pt !important;
+        margin-bottom: 15pt !important;
+        page-break-inside: avoid;
+    }
+    
+    .student-details,
+    .person-details {
+        display: block !important;
+    }
+    
+    .student-photo,
+    .person-photo {
+        float: right !important;
+        margin: 0 0 10pt 10pt !important;
+    }
+    
+    .student-photo img,
+    .person-photo img {
+        width: 80pt !important;
+        height: 100pt !important;
+        border: 1px solid #000 !important;
+        object-fit: cover !important;
+    }
+    
+    .info-row {
+        display: block !important;
+        margin-bottom: 3pt !important;
+        page-break-inside: avoid;
+    }
+    
+    .info-label {
+        font-weight: bold !important;
+        display: inline !important;
+        min-width: auto !important;
+    }
+    
+    .info-value {
+        display: inline !important;
+        margin-left: 5pt;
+    }
+    
+    /* Financial/receipt specific */
+    .receipt-header {
+        text-align: center;
+        border: 2px solid #000 !important;
+        background: #f0f0f0 !important;
+        padding: 10pt !important;
+        margin-bottom: 15pt !important;
+        page-break-inside: avoid;
+    }
+    
+    .receipt-number {
+        font-size: 14pt !important;
+        font-weight: bold !important;
+        margin-bottom: 5pt;
+    }
+    
+    .amount-paid {
+        font-size: 18pt !important;
+        font-weight: bold !important;
+        color: #000 !important;
+        border: 2px solid #000 !important;
+        padding: 8pt !important;
+        margin: 10pt 0 !important;
+        text-align: center;
+        background: #f5f5f5 !important;
+    }
+    
+    /* Utilities */
+    .text-center {
+        text-align: center !important;
+    }
+    
+    .text-right {
+        text-align: right !important;
+    }
+    
+    .text-left {
+        text-align: left !important;
+    }
+    
+    .font-bold {
+        font-weight: bold !important;
+    }
+    
+    .mt-2 { margin-top: 8pt !important; }
+    .mb-2 { margin-bottom: 8pt !important; }
+    .mt-3 { margin-top: 12pt !important; }
+    .mb-3 { margin-bottom: 12pt !important; }
+    
+    /* Page breaks */
+    .page-break-before {
+        page-break-before: always;
+    }
+    
+    .page-break-after {
+        page-break-after: always;
+    }
+    
+    .page-break-avoid {
+        page-break-inside: avoid;
+    }
+    
+    /* Hide decorative elements */
+    .decoration,
+    .background-pattern,
+    .gradient,
+    .animation,
+    .emoji {
+        display: none !important;
+    }
+    
+    /* Ensure proper text rendering */
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold !important;
+        color: #000 !important;
+        page-break-after: avoid;
+        margin: 10pt 0 5pt 0 !important;
+    }
+    
+    h1 { font-size: 18pt !important; }
+    h2 { font-size: 16pt !important; }
+    h3 { font-size: 14pt !important; }
+    h4 { font-size: 12pt !important; }
+    h5 { font-size: 11pt !important; }
+    h6 { font-size: 10pt !important; }
+    
+    p {
+        margin: 0 0 6pt 0 !important;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Links */
+    a {
+        color: #000 !important;
+        text-decoration: underline !important;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #666;
+    }
+    
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+}
+
+/* =====================================
+   PRINT COMPONENTS
+   ===================================== */
+
+/* Print Header Component */
+.print-header-component {
+    display: none;
+}
+
+@media print {
+    .print-header-component {
+        display: block !important;
+        text-align: center;
+        border-bottom: 2px solid #000;
+        padding-bottom: 15pt;
+        margin-bottom: 20pt;
+        page-break-inside: avoid;
+    }
+    
+    .print-header-component .school-info {
+        margin-bottom: 10pt;
+    }
+    
+    .print-header-component .school-logo {
+        width: 60pt !important;
+        height: 60pt !important;
+        margin: 0 auto 8pt auto;
+        display: block;
+    }
+    
+    .print-header-component .school-name {
+        font-size: 18pt;
+        font-weight: bold;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1pt;
+    }
+    
+    .print-header-component .school-address {
+        font-size: 10pt;
+        margin: 5pt 0;
+        color: #333;
+    }
+    
+    .print-header-component .report-title {
+        font-size: 14pt;
+        font-weight: bold;
+        margin: 10pt 0 0 0;
+        text-transform: uppercase;
+        text-decoration: underline;
+    }
+}
+
+/* Print Footer Component */
+.print-footer-component {
+    display: none;
+}
+
+@media print {
+    .print-footer-component {
+        display: block !important;
+        margin-top: 20pt;
+        padding-top: 10pt;
+        border-top: 1px solid #000;
+        font-size: 9pt;
+        color: #666;
+        text-align: center;
+        page-break-inside: avoid;
+    }
+    
+    .print-footer-component p {
+        margin: 2pt 0;
+    }
+    
+    .print-footer-component .generation-info {
+        margin-bottom: 5pt;
+    }
+    
+    .print-footer-component .copyright {
+        font-style: italic;
+    }
+}
+
+/* =====================================
+   LANDSCAPE ORIENTATION SUPPORT
+   ===================================== */
+
+@media print and (orientation: landscape) {
+    @page {
+        margin: 15mm 20mm;
+        size: A4 landscape;
+    }
+    
+    .table {
+        font-size: 9pt !important;
+    }
+    
+    .table th,
+    .table td {
+        padding: 4pt 3pt !important;
+    }
+}
+
+/* =====================================
+   PRINT UTILITIES
+   ===================================== */
+
+@media screen {
+    /* Show print preview styles on screen when needed */
+    .print-preview {
+        background: white;
+        color: #000;
+        font-family: 'Times New Roman', serif;
+        padding: 20mm 15mm;
+        max-width: 210mm;
+        margin: 0 auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .print-preview .sidebar,
+    .print-preview .main-header,
+    .print-preview .btn,
+    .print-preview .no-print {
+        display: none;
+    }
+}
